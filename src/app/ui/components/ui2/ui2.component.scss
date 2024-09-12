@@ -1,0 +1,47 @@
+.ui {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+  
+.close-aside {
+    height: 0px;
+    overflow: hidden;
+}
+  
+nav {
+    background: var(--app-darklight2);
+}
+  
+main {
+    flex-grow: 1;
+    background: var(--app-darklight);
+}
+
+.pages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page {
+    width: 250px;
+    display: block;
+    text-align: center;
+
+    &:first-child {
+        background-color: #9457d8;
+    }
+    
+    &:nth-child(2) {
+        background-color: #d8579b;
+    }
+
+    &:nth-child(3) {
+        background-color: #d8575b;
+    }
+
+    &:last-child {
+        background-color: #d89457;
+    }
+}

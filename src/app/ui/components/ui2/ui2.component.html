@@ -1,0 +1,26 @@
+<div class="ui">
+    <header>
+      <span (click)="toggle()">
+        @if(open){
+          <ng-content select=".trans-icon-open"> </ng-content>
+        }
+        @else{
+          <ng-content select=".trans-icon-close"> </ng-content>
+        }
+      </span>
+
+      <ng-content select=".trans-header"></ng-content>
+    </header>
+  
+    <nav [ngClass]="{ 'close-aside': !open }">
+      <ng-content select=".trans-nav"></ng-content>
+    </nav>
+  
+    <main>
+      <ng-content select=".trans-content"></ng-content>
+    </main>
+  
+    <footer>
+      <ng-content select=".trans-footer"></ng-content>
+    </footer>
+</div>

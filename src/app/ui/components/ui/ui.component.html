@@ -1,0 +1,33 @@
+<header class="fixed-top">
+  <span (click)="toggle()" >
+    @if(open) {
+      <ng-content select=".trans-icon-close"> </ng-content>
+    }
+    @else {
+      <ng-content select=".trans-icon-open"> </ng-content>
+    }
+   </span>
+
+  <span (click)="toggle()">
+    <ng-content select=".trans-button"> </ng-content>
+  </span>
+
+  <ng-content select=".trans-header"> </ng-content>
+</header>
+<main [ngClass]="{ 'close-aside': !open }">
+  <div class="shadow position-fixed"></div>
+  <aside>
+    <div class="scroller">
+      <ng-content select=".trans-nav"> </ng-content>
+    </div>
+  </aside>
+  <div class="page">
+    <div class="contents">
+      <ng-content select=".trans-content"> </ng-content>
+    </div>
+
+    <footer>
+      <ng-content select=".trans-footer"> </ng-content>
+    </footer>
+  </div>
+</main>
