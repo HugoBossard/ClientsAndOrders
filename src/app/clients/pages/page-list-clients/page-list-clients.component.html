@@ -1,1 +1,13 @@
-<p>page-list-clients works!</p>
+<app-template-full-width *ngIf="clients">
+    <app-table-light [headers]="headers">
+        <tr *ngFor="let client of clients">
+            <td> {{ client.name }} </td>
+            <td> {{ client.totalCaHt }} </td>
+            <td> {{ client.tva }} </td>
+            <td> {{ client.comment }} </td>
+            <td> {{ client.state }} </td>
+        </tr>
+    </app-table-light>
+
+    <app-button title="Add client"> </app-button>
+</app-template-full-width>

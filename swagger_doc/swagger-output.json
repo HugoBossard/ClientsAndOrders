@@ -1,0 +1,30 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Orders & Clients API",
+    "description": "Clients can ask for different orders that represents training courses created by multiples compagnies."
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "orders",
+      "description": "Order endpoints"
+    },
+    {
+      "name": "clients",
+      "description": "Client endpoints"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {}
+}

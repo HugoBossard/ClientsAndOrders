@@ -2,6 +2,10 @@ const jsonServer = require("json-server");
 const fs = require("fs");
 const path = require("path");
 
+// Swagger
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require("./swagger_doc/swagger-output.json");
+
 const DBPATH = "api/db.json";
 
 const server = jsonServer.create();
@@ -39,6 +43,7 @@ server.use((req, res, next) => {
 });
 
 server.use(router);
+server.use("/api-doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // Start the server
 server.listen(3000, () => {

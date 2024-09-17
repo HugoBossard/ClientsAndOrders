@@ -1,1 +1,6 @@
-<p>page-add-order works!</p>
+<app-template-container title="Add Order">
+    <app-form-order
+      [init]="item"
+      (submitted)="handleSubmit($event)"
+    ></app-form-order>
+</app-template-container>
