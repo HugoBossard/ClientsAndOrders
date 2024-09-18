@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StateOrder } from '../../../../core/enums/state-order';
 import { Order } from '../../../../core/models/order';
 
@@ -27,10 +27,17 @@ export class FormOrderComponent {
       nbJours: [this.init.nbJours],
       tva: [this.init.tva],
       state: [this.init.state],
-      client: [this.init.client],
+      client: [
+        this.init.client,
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(20),
+        ],
+      ],
       comment: [this.init.comment],
-      typePresta: [this.init.typePresta],
-      id: [this.init.id]
+      typePresta: [this.init.typePresta, Validators.required],
+      id: [this.init.id],
     });
   }
 
