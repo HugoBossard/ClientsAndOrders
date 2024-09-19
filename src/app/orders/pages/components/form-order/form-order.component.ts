@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ClientsService } from '../../../../clients/services/clients.service';
 import { StateOrder } from '../../../../core/enums/state-order';
+import { Client } from '../../../../core/models/client';
 import { Order } from '../../../../core/models/order';
 
 @Component({
@@ -9,19 +11,21 @@ import { Order } from '../../../../core/models/order';
   styleUrl: './form-order.component.scss'
 })
 export class FormOrderComponent {
-  status = Object.values(StateOrder);
+  states = Object.values(StateOrder);
+  clients!: Client[];
+
   @Input() init!: Order;
   @Output() submitted = new EventEmitter<Order>();
   form!: FormGroup;
+  private fb: FormBuilder = inject(FormBuilder);
 
-  // form2 = new FormGroup({
-  //   tjmHt: new FormControl(this.init.tjmHt),
-  //   nbJours: new FormControl(this.init.nbJours),
-  // });
-
-  constructor(private fb: FormBuilder) {}
+  constructor(private clientsService: ClientsService) {}
 
   ngOnInit() {
+    this.clientsService.collection.subscribe((clients) => {
+      this.clients = clients;
+    });
+
     this.form = this.fb.group({
       tjmHt: [this.init.tjmHt],
       nbJours: [this.init.nbJours],

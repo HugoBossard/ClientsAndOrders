@@ -30,12 +30,21 @@ export class OrdersService {
     this.collection$ = collection;
   }
 
+  public getById(itemId: number): Observable<Order> {
+    return this.http.get<Order>(`${OrdersService.API_URL}/orders/${itemId}`);
+  }
+
   public add(item: Order): Observable<Order> {
     return this.http.post<Order>(`${OrdersService.API_URL}/orders`, item);
   }
 
   public update(item: Order): Observable<Order> {
     return this.http.put<Order>(`${OrdersService.API_URL}/orders/${item.id}`, item);
+  }
+
+  public deleteById(itemId: number) {
+    console.log("Trying to make a http delete request");
+    return this.http.delete(`${OrdersService.API_URL}/orders/${itemId}`);
   }
 
   public changeStatus(item: Order, status: StateOrder): Observable<Order> {

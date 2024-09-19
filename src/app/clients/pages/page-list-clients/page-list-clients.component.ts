@@ -9,6 +9,7 @@ import { ClientsService } from '../../services/clients.service';
 })
 export class PageListClientsComponent {
   clients!: Client[];
+  
   headers: string[] = [
     "Name",
     "TotalCaHt",

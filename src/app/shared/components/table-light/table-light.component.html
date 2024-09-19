@@ -1,9 +1,11 @@
 <table class="table">
     <thead>
       <tr>
-        <th *ngFor="let item of headers">
-          {{ item }}
-        </th>
+        @for (header of headers; track $index) {
+          <th>
+            {{ header }}
+          </th>
+        }
       </tr>
     </thead>
     <tbody>

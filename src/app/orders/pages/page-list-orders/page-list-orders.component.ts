@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { StateOrder } from '../../../core/enums/state-order';
 import { Order } from '../../../core/models/order';
 import { OrdersService } from '../../services/orders.service';
 
@@ -9,8 +11,8 @@ import { OrdersService } from '../../services/orders.service';
   styleUrl: './page-list-orders.component.scss'
 })
 export class PageListOrdersComponent {
-  title = "Je suis le titre passer en paramètre";
   headers: string[] = [
+    'Actions',
     'Type',
     'Client',
     'NbJours',
@@ -20,15 +22,13 @@ export class PageListOrdersComponent {
     'State'
   ];
 
-  status: String[] = [
-    "CANCELED",
-    "OPTION",
-    "CONFIRMED"
-  ];
-
+  states: String[] = Object.values(StateOrder);
   orders$!: Observable<Order[]>;
 
-  constructor(private ordersService: OrdersService) {
+  private ordersService: OrdersService = inject(OrdersService);
+  private router: Router = inject(Router);
+
+  ngOnInit() {
     this.orders$ = this.ordersService.collection;
   }
 
@@ -37,6 +37,25 @@ export class PageListOrdersComponent {
 
     this.ordersService.changeStatus(item, status).subscribe((data) => {
       Object.assign(item, data);
+    });
+  }
+
+  editOrder(item: Order) {
+    // this.router.navigate("orders/edit/id")
+    this.router.navigate(["orders", "edit", item.id]);
+  }
+
+  deleteOrderById(itemId: number) {
+    let userWantToDelete = confirm("Êtes-vous sûr de supprimer cet élément ?");
+
+    if (!userWantToDelete) {
+      return;
+    }
+
+    console.log("Trying to delete order with id" + itemId);
+    
+    this.ordersService.deleteById(itemId).subscribe(() => {
+      console.log("Delete successfull");
     });
   }
 }
