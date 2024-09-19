@@ -17,11 +17,18 @@ export class FormOrderComponent {
   @Input() init!: Order;
   @Output() submitted = new EventEmitter<Order>();
   form!: FormGroup;
+  selectedClientName!: String;
+  selectedState!: String;
   private fb: FormBuilder = inject(FormBuilder);
 
   constructor(private clientsService: ClientsService) {}
 
   ngOnInit() {
+    this.clientsService.getById(this.init.id).subscribe((client) => {
+      this.selectedClientName = client.name;
+      this.selectedState = client.state;
+    });
+
     this.clientsService.collection.subscribe((clients) => {
       this.clients = clients;
     });
