@@ -79,6 +79,16 @@
       "client": "Zabibu ETC",
       "comment": null,
       "id": 9
+    },
+    {
+      "tjmHt": 1500,
+      "nbJours": 4,
+      "tva": 20,
+      "state": "CONFIRMED",
+      "client": "Altran",
+      "comment": "Merci pour cette formation !",
+      "typePresta": "Test",
+      "id": 10
     }
   ],
   "clients": [

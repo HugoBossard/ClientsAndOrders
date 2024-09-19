@@ -52,7 +52,9 @@ export class PageListOrdersComponent {
     if (!userWantToDelete) {
       return;
     }
-    
-    this.ordersService.deleteById(itemId).subscribe();
+
+    this.ordersService.deleteById(itemId).subscribe(() => {
+      this.router.navigateByUrl("orders");
+    });
   }
 }
