@@ -1,0 +1,59 @@
+<ng-container>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-group">
+            <label for="clientName"> name </label>
+            <input type="text" class="form-control" formControlName="clientName" id="clientName"/>
+        
+            @if(form.controls['clientName'].invalid && form.controls['clientName'].touched) {
+                <div class="alert alert-danger">
+                    Champ invalide
+                </div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="totalCaHt"> totalCaHt </label>
+            <input type="text" class="form-control" formControlName="totalCaHt" id="totalCaHt"/>
+
+            @if(form.controls['totalCaHt'].invalid && form.controls['totalCaHt'].touched) {
+                <div class="alert alert-danger">
+                    Champ invalide
+                </div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="tva"> tva </label>
+            <input type="text" class="form-control" formControlName="tva" id="tva"/>
+
+            @if(form.controls['tva'].invalid && form.controls['tva'].touched) {
+                <div class="alert alert-danger">
+                    Champ invalide
+                </div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="comment"> comment </label>
+            <input type="text" class="form-control" formControlName="comment" id="comment"/>
+
+            @if(form.controls['comment'].invalid && form.controls['comment'].touched) {
+                <div class="alert alert-danger">
+                    Champ invalide
+                </div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="state"> state </label>
+
+            <select>
+                @for (state of states; track $index) {
+                    <option [selected]="state === state" [value]="state">
+                        {{ state }}
+                    </option>
+                }
+            </select>
+        </div>
+    </form>
+</ng-container>

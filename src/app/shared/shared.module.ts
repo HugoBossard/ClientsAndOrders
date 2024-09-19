@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { TemplatesModule } from '../templates/templates.module';
 import { ButtonComponent } from './components/button/button.component';
 import { TableLightComponent } from './components/table-light/table-light.component';
+import { ClientStateDirective } from './directives/client-state.directive';
 import { StateDirective } from './directives/state.directive';
 import { TotalPipe } from './pipes/total.pipe';
 
@@ -13,9 +14,10 @@ import { TotalPipe } from './pipes/total.pipe';
     TableLightComponent,
     TotalPipe,
     ButtonComponent,
-    StateDirective
+    StateDirective,
+    ClientStateDirective
   ],
   imports: [CommonModule, RouterModule],
-  exports: [TemplatesModule, TableLightComponent, TotalPipe, ButtonComponent, StateDirective, ReactiveFormsModule]
+  exports: [TemplatesModule, TableLightComponent, TotalPipe, ButtonComponent, StateDirective, ClientStateDirective, ReactiveFormsModule]
 })
 export class SharedModule { }

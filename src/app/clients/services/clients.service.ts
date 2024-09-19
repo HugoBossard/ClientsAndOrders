@@ -11,8 +11,8 @@ export class ClientsService {
   private collection$: Observable<Client[]>;
   private static API_URL = environment.urlApi;
 
-  constructor(private httpCLient: HttpClient) {
-    this.collection$ = httpCLient.get<Client[]>(`${ClientsService.API_URL}/clients`);
+  constructor(private http: HttpClient) {
+    this.collection$ = http.get<Client[]>(`${ClientsService.API_URL}/clients`);
   }
 
   public get collection() {
@@ -21,5 +21,9 @@ export class ClientsService {
 
   public set collection(collection: Observable<Client[]>) {
     this.collection$ = collection;
+  }
+
+  public add(client: Client): Observable<Client> {
+    return this.http.post<Client>(`${ClientsService.API_URL}/clients`, client);
   }
 }

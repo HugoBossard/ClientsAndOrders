@@ -7,11 +7,19 @@
                     <td> {{ client.totalCaHt }} </td>
                     <td> {{ client.tva }} </td>
                     <td> {{ client.comment }} </td>
-                    <td> {{ client.state }} </td>
+                    <td [appClientState]="client.state">
+                        <select (change)="changeStatus(client, $event)">
+                            @for (state of states; track $index) {
+                                <option [selected]="state === client.state" [value]="state">
+                                    {{ state }}
+                                </option>
+                            }
+                        </select>
+                    </td>
                 </tr>
             }
         </app-table-light>
 
-        <app-button title="Add client"> </app-button>
+        <app-button title="Add client" route="add"> </app-button>
     </app-template-full-width>
 }

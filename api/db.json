@@ -6,7 +6,7 @@
       "tva": 20,
       "state": "OPTION",
       "client": "Capgemini",
-      "comment": "Merci Cap pour les 24k",
+      "comment": "Merci GFI pour les 24k",
       "typePresta": "formation",
       "id": 1
     },
@@ -69,16 +69,6 @@
       "client": "Altran Tech",
       "comment": "Formation sur les nouvelles technologies",
       "id": 7
-    },
-    {
-      "tjmHt": 1200,
-      "nbJours": 1,
-      "tva": 20,
-      "state": "OPTION",
-      "typePresta": "Coaching",
-      "client": "Accenture Technologies",
-      "comment": "Yes!!!!!",
-      "id": 8
     },
     {
       "tjmHt": 280,
