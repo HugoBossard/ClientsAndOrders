@@ -15,7 +15,7 @@
     <div class="form-group">
       <label for="client"> client </label>
   
-      <select class="form-control" id="client">
+      <select class="form-control" formControlName="client" id="client">
         @for (client of clients; track client.id) {
           @if(selectedClientName && selectedClientName === client.name) {
             <option [value]="client.name" selected> {{ client.name }} </option>

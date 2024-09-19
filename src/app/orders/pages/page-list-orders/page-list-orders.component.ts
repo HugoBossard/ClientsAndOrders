@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { StateOrder } from '../../../core/enums/state-order';
 import { Order } from '../../../core/models/order';
 import { OrdersService } from '../../services/orders.service';
@@ -23,13 +22,15 @@ export class PageListOrdersComponent {
   ];
 
   states: String[] = Object.values(StateOrder);
-  orders$!: Observable<Order[]>;
+  orders!: Order[];
 
   private ordersService: OrdersService = inject(OrdersService);
   private router: Router = inject(Router);
 
   ngOnInit() {
-    this.orders$ = this.ordersService.collection;
+    this.ordersService.collection.subscribe((orders) => {
+      this.orders = orders;
+    });
   }
 
   changeStatus(item: Order, $event: any) {
@@ -51,11 +52,7 @@ export class PageListOrdersComponent {
     if (!userWantToDelete) {
       return;
     }
-
-    console.log("Trying to delete order with id" + itemId);
     
-    this.ordersService.deleteById(itemId).subscribe(() => {
-      console.log("Delete successfull");
-    });
+    this.ordersService.deleteById(itemId).subscribe();
   }
 }

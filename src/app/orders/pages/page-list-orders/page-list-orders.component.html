@@ -1,4 +1,4 @@
-@if(orders$ | async; as orders) {
+@if(orders) {
     <app-template-full-width title="Orders">
         <app-table-light [headers]="headers">
             @for (item of orders; track item.id) {
