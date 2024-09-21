@@ -1,1 +1,7 @@
-<p>page-edit-client works!</p>
+<app-template-container title="Edit Client">
+    @if(client) {
+        <ng-container>
+            <app-form-client [init]="client" (submitted)="handleSubmit($event)"> </app-form-client>
+        </ng-container>
+    }
+</app-template-container>

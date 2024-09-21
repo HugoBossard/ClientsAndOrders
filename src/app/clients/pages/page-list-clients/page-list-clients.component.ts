@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { StateClient } from '../../../core/enums/state-client';
 import { Client } from '../../../core/models/client';
 import { ClientsService } from '../../services/clients.service';
@@ -12,6 +13,7 @@ export class PageListClientsComponent {
   clients!: Client[];
   
   headers: string[] = [
+    "Actions",
     "Name",
     "TotalCaHt",
     "Tva",
@@ -21,7 +23,7 @@ export class PageListClientsComponent {
 
   states: String[] = Object.values(StateClient);
 
-  constructor(private clientsService: ClientsService) {
+  constructor(private clientsService: ClientsService, private router: Router) {
     clientsService.collection.subscribe((clients) => {
       this.clients = clients;
     });
@@ -33,5 +35,19 @@ export class PageListClientsComponent {
     this.clientsService.changeStatus(client, status).subscribe((data) => {
       Object.assign(client, data);
     });
+  }
+
+  editClient(client: Client) {
+    this.router.navigate(["clients", "edit", client.id]);
+  }
+
+  deleteClient(client: Client) {
+    const wantToDelete = confirm("Voulez-vous réellement supprimer ce client ?");
+
+    if (!wantToDelete) {
+      return;
+    }
+
+    this.clientsService.deleteClientById(client.id).subscribe();
   }
 }

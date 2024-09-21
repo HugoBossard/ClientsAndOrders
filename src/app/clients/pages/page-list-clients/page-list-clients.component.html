@@ -3,6 +3,15 @@
         <app-table-light [headers]="headers">
             @for (client of clients; track client.id) {
                 <tr>
+                    <td>
+                        <span (click)="editClient(client)">
+                            <app-icon-edit> </app-icon-edit>
+                        </span>
+
+                        <span (click)="deleteClient(client)">
+                            <app-icon-delete> </app-icon-delete>
+                        </span>
+                    </td>
                     <td> {{ client.name }} </td>
                     <td> {{ client.totalCaHt }} </td>
                     <td> {{ client.tva }} </td>

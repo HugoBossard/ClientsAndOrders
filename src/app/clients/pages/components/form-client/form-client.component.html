@@ -1,10 +1,10 @@
 <ng-container>
     <form [formGroup]="form" (ngSubmit)="submit()">
         <div class="form-group">
-            <label for="clientName"> name </label>
-            <input type="text" class="form-control" formControlName="clientName" id="clientName"/>
+            <label for="name"> name </label>
+            <input type="text" class="form-control" formControlName="name" id="name"/>
         
-            @if(form.controls['clientName'].invalid && form.controls['clientName'].touched) {
+            @if(form.controls['name'].invalid && form.controls['name'].touched) {
                 <div class="alert alert-danger">
                     Champ invalide
                 </div>
@@ -47,7 +47,7 @@
         <div class="form-group">
             <label for="state"> state </label>
 
-            <select>
+            <select class="form-control" id="state" formControlName="state">
                 @for (state of states; track $index) {
                     <option [selected]="state === state" [value]="state">
                         {{ state }}
@@ -55,5 +55,7 @@
                 }
             </select>
         </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid"> Submit </button>
     </form>
 </ng-container>
