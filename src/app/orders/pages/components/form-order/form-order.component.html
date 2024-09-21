@@ -17,12 +17,9 @@
   
       <select class="form-control" formControlName="client" id="client">
         @for (client of clients; track client.id) {
-          @if(selectedClientName && selectedClientName === client.name) {
-            <option [value]="client.name" selected> {{ client.name }} </option>
-          }
-          @else {
-            <option [value]="client.name"> {{ client.name }} </option>
-          }
+          <option [selected]="selectedClientName === client.state" [value]="client.name"> 
+            {{ client.name }} 
+          </option>
         }
       </select>
     </div>
@@ -46,12 +43,9 @@
       <label for="state"> state </label>
       <select class="form-control" id="state" formControlName="state">
         @for (state of states; track $index) {
-          @if(selectedState) {
-            <option [value]="state" selected> {{ state }} </option>
-          }
-          @else {
-            <option [value]="state"> {{ state }} </option>
-          }
+          <option [selected]="selectedState === state" [value]="state"> 
+            {{ state }} 
+          </option>
         }
       </select>
     </div>

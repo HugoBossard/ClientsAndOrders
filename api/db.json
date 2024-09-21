@@ -93,11 +93,11 @@
   ],
   "clients": [
     {
-      "state": "ACTIVE",
-      "tva": 20,
       "id": 1,
       "name": "Capgemini",
+      "tva": 20,
       "totalCaHt": 24000,
+      "state": "ACTIVE",
       "comment": "Grand client fidèle"
     },
     {
@@ -117,11 +117,11 @@
       "comment": "Client régulier pour les audits"
     },
     {
-      "state": "ACTIVE",
-      "tva": 20,
       "id": 4,
       "name": "Alten",
+      "tva": 20,
       "totalCaHt": 12000,
+      "state": "ACTIVE",
       "comment": "Client clé pour des projets critiques"
     },
     {

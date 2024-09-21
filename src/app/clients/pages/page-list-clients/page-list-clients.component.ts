@@ -30,8 +30,8 @@ export class PageListClientsComponent {
   changeStatus(client: Client, $event: any) {
     const status = $event.target.value;
 
-    //this.clientsService.changeStatus(client, status).subscribe((data) => {
-    //  Object.assign(client, data);
-    //});
+    this.clientsService.changeStatus(client, status).subscribe((data) => {
+      Object.assign(client, data);
+    });
   }
 }
